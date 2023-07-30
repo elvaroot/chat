@@ -81,81 +81,87 @@ class main0 extends StatelessWidget {
           ],
         ),
         body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                CustomContainer(imageUrl: "https://athome-eg.com/image/cache/catalog/Dining-Chair-DC03-550x550.jpg",text: Text("اهلا بك .",
-
-                  style: GoogleFonts.cairo(
-                      fontSize: 48,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
-
-
-                )),
-                SizedBox(height: 10,),
-                GridView.count(
-
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  padding: EdgeInsets.all(1),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  children: arrayTest.map((e) => Card(
-                    color: Colors.transparent,
-                    elevation: 0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-
-                          image: NetworkImage(e['url']),
-                          fit: BoxFit.cover,
-
-                        ),
-                      ),
-                      child: Container(
-                          width: double.infinity,
+            child: Container(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  CustomContainer(imageUrl: "https://athome-eg.com/image/cache/catalog/Dining-Chair-DC03-550x550.jpg",text: Text("اهلا بك .",
+          
+                    style: GoogleFonts.cairo(
+                        fontSize: 48,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+          
+          
+                  )),
+                  SizedBox(height: 10,),
+                  Expanded(
+                child: SingleChildScrollView( 
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    padding: EdgeInsets.all(1),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    children: arrayTest.map(
+                      (e) => Card(
+                        color: Colors.transparent,
+                        elevation: 0,
+                        child: Container(
                           decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              image: NetworkImage(e['url']),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(
-                                  begin: Alignment.bottomRight,
-                                  colors:[
-                                    Colors.black.withOpacity(1 ),
-                                    Colors.black.withOpacity(.4)
-                                  ]
-                              )
-                          ),
-                        child:Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                            Text(e['name'],style: TextStyle(color: Colors.white,fontSize: 20)),
-                          SizedBox(height: 90,),
-                          Container(
-                            height: 40,
-                            margin: EdgeInsets.symmetric(horizontal: 30),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: const Color(0xFFffffff)
-
+                                begin: Alignment.bottomRight,
+                                colors: [
+                                  Colors.black.withOpacity(1),
+                                  Colors.black.withOpacity(.4)
+                                ],
+                              ),
                             ),
-                            child: Center(child: Text("تسوق الان",style: TextStyle(color: Colors.black,fontSize: 20))),
-                          )
-
-                        ],
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(e['name'],
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                                SizedBox(height: 90),
+                                Container(
+                                  height: 40,
+                                  margin: EdgeInsets.symmetric(horizontal: 30),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color(0xFFffffff),
+                                  ),
+                                  child: Center(
+                                      child: Text("تسوق الان",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20))),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-
-                    ),
-                    ),
-                  )).toList(),
-                ),              ],
-
-            ),
+                    ).toList(),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
+    ),
       theme: ThemeData(
         primaryColor: Color(0xFF6527BE),
         textTheme: GoogleFonts.tajawalTextTheme(Theme.of(context).textTheme).copyWith(
